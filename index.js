@@ -27,15 +27,12 @@ const initilizeDatabase = async () => {
 
 initilizeDatabase()
 
-app.get("/products/", async (request, response) => {
-    const {search_q = ""} = request.query
+app.get("/products", async (request, response) => {
     const sqlQuery = `
      select
      *
      from
      products
-     where
-     category like "%${search_q}%" 
     `
     const data = await db.all(sqlQuery)
     response.send(data)
