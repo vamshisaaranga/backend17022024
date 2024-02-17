@@ -35,10 +35,7 @@ app.get("/products/", async (request, response) => {
      from
      products
      where
-     title like "%${search_q}%" OR
-     description like "%${search_q}%" OR
-     category like "%${search_q}%" OR
-     price <= CAST("${search_q}" AS INTEGER)
+     category like "%${search_q}%" 
     `
     const data = await db.all(sqlQuery)
     response.send(data)
